@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <!--
- *
- * Copyright (c) 2011-2014, Qulice.com
+ * Copyright (c) 2011-2015, Qulice.com
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,8 +27,6 @@
  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- * @version $Id$
  -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -40,38 +37,14 @@
         <artifactId>qulice</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>qulice-maven-plugin</artifactId>
-    <packaging>maven-plugin</packaging>
-    <name>qulice-maven-plugin</name>
-    <properties>
-        <maven.version>3.0.5</maven.version>
-    </properties>
+    <artifactId>qulice-ant</artifactId>
+    <packaging>jar</packaging>
+    <name>qulice-ant</name>
     <dependencies>
-        <dependency>
-            <groupId>com.qulice</groupId>
-            <artifactId>qulice-spi</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven.plugin-tools</groupId>
-            <artifactId>maven-plugin-annotations</artifactId>
-            <version>3.3</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>com.qulice</groupId>
             <artifactId>qulice-checkstyle</artifactId>
             <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven.reporting</groupId>
-            <artifactId>maven-reporting-exec</artifactId>
-            <version>1.1</version>
         </dependency>
         <dependency>
             <groupId>com.qulice</groupId>
@@ -98,16 +71,6 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>jsr305</artifactId>
-            <version>2.0.3</version>
-        </dependency>
-        <dependency>
-            <groupId>xerces</groupId>
-            <artifactId>xmlParserAPIs</artifactId>
-            <version>2.6.2</version>
-        </dependency>
-        <dependency>
             <groupId>com.qulice</groupId>
             <artifactId>qulice-codenarc</artifactId>
             <version>${project.version}</version>
@@ -123,12 +86,9 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-collections</groupId>
-            <artifactId>commons-collections</artifactId>
+            <groupId>com.qulice</groupId>
+            <artifactId>qulice-spi</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.jcabi</groupId>
@@ -136,142 +96,22 @@
         </dependency>
         <dependency>
             <groupId>com.jcabi</groupId>
-            <artifactId>jcabi-xml</artifactId>
-        </dependency>
-        <dependency>
-            <!-- Forward all calls to SLF4J to Maven log. -->
-            <groupId>com.jcabi</groupId>
-            <artifactId>jcabi-maven-slf4j</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-core</artifactId>
-            <version>${maven.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-plugin-api</artifactId>
-            <version>${maven.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-model</artifactId>
-            <version>${maven.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-artifact</artifactId>
-            <version>${maven.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven.shared</groupId>
-            <artifactId>maven-dependency-analyzer</artifactId>
-            <version>1.5</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.maven</groupId>
-                    <artifactId>maven-project</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.maven</groupId>
-                    <artifactId>maven-artifact-manager</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven.plugin-testing</groupId>
-            <artifactId>maven-plugin-testing-harness</artifactId>
-            <version>3.1.0</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.plexus</groupId>
-            <artifactId>plexus-utils</artifactId>
-            <version>3.0.17</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.plexus</groupId>
-            <artifactId>plexus-container-default</artifactId>
-            <version>1.5.5</version>
+            <artifactId>jcabi-aspects</artifactId>
             <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging-api</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
+	<dependency>
+	    <groupId>org.apache.ant</groupId>
+	    <artifactId>ant</artifactId>
+	    <version>1.9.4</version>
+	</dependency>
         <dependency>
-            <groupId>org.sonatype.sisu</groupId>
-            <artifactId>sisu-inject-plexus</artifactId>
-            <version>2.5.3</version>
-            <scope>runtime</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.google.guava</groupId>
-                    <artifactId>guava</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
         </dependency>
     </dependencies>
     <build>
         <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>default-compile</id>
-                        <configuration>
-                            <excludes>
-                                <exclude>**/HelpMojo.java</exclude>
-                            </excludes>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>default-testCompile</id>
-                        <configuration>
-                            <compilerArgument>-Xlint:-processing</compilerArgument>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>compile-helpmojo</id>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <includes>
-                                <include>**/HelpMojo.java</include>
-                            </includes>
-                            <compilerArgument>-Xlint:-unchecked,-rawtypes</compilerArgument>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.3</version>
-                <configuration>
-                    <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>helpmojo</goal>
-                            <goal>descriptor</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+
             <plugin>
                 <artifactId>maven-invoker-plugin</artifactId>
                 <!--
@@ -284,32 +124,9 @@
                 -->
                 <version>1.6</version>
                 <configuration combine.children="append">
-                    <mergeUserSettings>true</mergeUserSettings>
-                    <!--
-                    With this construct you can exclude certain IT projects.
-                    -->
+                    <mergeUserSettings>false</mergeUserSettings>
                     <pomIncludes>
-                        <pomInclude>checkstyle-exceptions/pom.xml</pomInclude>
-                        <pomInclude>checkstyle-violations/pom.xml</pomInclude>
-                        <pomInclude>checkstyle-newlines/pom.xml</pomInclude>
-                        <pomInclude>pmd-violations/pom.xml</pomInclude>
-                        <pomInclude>codenarc-violations/pom.xml</pomInclude>
-                        <pomInclude>findbugs-exclude/pom.xml</pomInclude>
                         <pomInclude>findbugs-violations/pom.xml</pomInclude>
-                        <!--
-                         @todo #281 Dependency-violations is broken.
-                          As it uses maven-dependency-analyzer 1.4.
-                          The latter depends on ASM3. We can't add ASM3 in classpath as
-                          findbugs and PMD depends on ASM5.
-                          Find a way to upgrade maven-dependency-analyzer to use ASM5.
-                          After fix uncomment next line
-                          <pomInclude>dependency-violations/pom.xml</pomInclude>
-                        -->
-                        <pomInclude>multi-module/pom.xml</pomInclude>
-                        <pomInclude>pom-xpath-validator-violations</pomInclude>
-                        <pomInclude>duplicate-finder-violations</pomInclude>
-                        <!--<pomInclude>duplicate-finder-ignore-deps</pomInclude>-->
-                        <pomInclude>js-violations/pom.xml</pomInclude>
                     </pomIncludes>
                     <extraArtifacts>
                         <extraArtifact>${project.groupId}:qulice-checkstyle:${project.version}:jar</extraArtifact>

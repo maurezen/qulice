@@ -1,7 +1,6 @@
-<?xml version="1.0"?>
-<!--
+/**
  *
- * Copyright (c) 2011-2014, Qulice.com
+ * Copyright (c) 2011, Qulice.com
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,36 +29,12 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @version $Id$
- -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.qulice.plugin</groupId>
-    <artifactId>js-violations</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>js-violations</name>
+ *
+ * Validate that the build really failed and violations were reported.
+ */
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.qulice</groupId>
-                <artifactId>qulice-maven-plugin</artifactId>
-                <version>@project.version@</version>
-                <configuration>
-                    <license>file:${basedir}/LICENSE.txt</license>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-</project>
+def log = new File(basedir, 'build.log')
+assert log.text.contains('No Checkstyle violations found in 2 files')
+assert log.text.contains('No PMD violations found in 2 files')
+assert log.text.contains('CodeNarc not required')
+assert log.text.contains('com.qulice.foo.Main.list is or uses a map or set of URLs, which can be a performance hog')

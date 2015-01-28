@@ -1,7 +1,5 @@
-<?xml version="1.0"?>
-<!--
- *
- * Copyright (c) 2011-2014, Qulice.com
+/**
+ * Copyright (c) 2011-2015, Qulice.com
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,38 +26,48 @@
  * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+package com.qulice.ant;
+
+import org.junit.Ignore;
+import org.junit.Test;
+
+/**
+ * Test for AntEnvironment.
  *
+ * @author Yuriy Alevohin (alevohin@mail.ru)
  * @version $Id$
- -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.qulice.plugin</groupId>
-    <artifactId>js-violations</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>js-violations</name>
+ * @todo #337 Implement unit tests at AntEnvironmentTest
+ */
+public class AntEnvironmentTest {
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    /**
+     * AntEnvironment can build Classloader from org.apache.tools.ant.Project.
+     * @throws Exception If something wrong happens inside
+     */
+    @Test
+    @Ignore
+    @SuppressWarnings("PMD.UncommentedEmptyMethod")
+    public void buildsClassloader() throws Exception {
+    }
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.qulice</groupId>
-                <artifactId>qulice-maven-plugin</artifactId>
-                <version>@project.version@</version>
-                <configuration>
-                    <license>file:${basedir}/LICENSE.txt</license>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-</project>
+    /**
+     * AntEnvironment can return the files matching the specified pattern.
+     * @throws Exception If something wrong happens inside
+     */
+    @Test
+    @Ignore
+    @SuppressWarnings("PMD.UncommentedEmptyMethod")
+    public void returnsFiles() throws Exception {
+    }
+
+    /**
+     * AntEnvironment can exclude files.
+     * @throws Exception If something wrong happens inside
+     */
+    @Test
+    @Ignore
+    @SuppressWarnings("PMD.UncommentedEmptyMethod")
+    public void excludesFiles() throws Exception {
+    }
+}
